@@ -4,9 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CurrencyConverter"
+        xmlns:vm="clr-namespace:CurrencyConverter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CurrencyConverter" Height="150" Width="300">
+    <Window.DataContext>
+        <vm:CurrencyConverterViewModel/>
+    </Window.DataContext>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="10,10,10,10" 
+                   TextWrapping="Wrap" Text="Amount in €" VerticalAlignment="Top"/>
+        <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" 
+                 TextWrapping="Wrap" Text="{Binding Euros, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"
+                 x:Name="textBox"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="10,10,0,0" 
+                   TextWrapping="Wrap" Text="Amount in US $" VerticalAlignment="Top"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" 
+                   TextWrapping="Wrap" Text="{Binding Dollars}" VerticalAlignment="Top"
+                   x:Name="textBlock"/>
+
     </Grid>
 </Window>
